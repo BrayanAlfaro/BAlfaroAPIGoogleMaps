@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BALfaroAPIGoogleMapsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Automovil">
+          <Key>
+            <PropertyRef Name="Matricula" />
+          </Key>
+          <Property Name="Matricula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Marca" Type="varchar" MaxLength="50" />
+          <Property Name="Modelo" Type="varchar" MaxLength="50" />
+          <Property Name="Color" Type="varchar" MaxLength="50" />
+          <Property Name="LatitudInicial" Type="varchar" MaxLength="50" />
+          <Property Name="LongitudInicial" Type="varchar" MaxLength="50" />
+          <Property Name="LatitudFinal" Type="varchar" MaxLength="50" />
+          <Property Name="LongitudFinal" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="AutomovilAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Matricula" Type="varchar" Mode="In" />
+          <Parameter Name="Marca" Type="varchar" Mode="In" />
+          <Parameter Name="Modelo" Type="varchar" Mode="In" />
+          <Parameter Name="Color" Type="varchar" Mode="In" />
+          <Parameter Name="LatitudInicial" Type="varchar" Mode="In" />
+          <Parameter Name="LongitudInicial" Type="varchar" Mode="In" />
+          <Parameter Name="LatitudFinal" Type="varchar" Mode="In" />
+          <Parameter Name="LongitudFinal" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AutomovilDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Matricula" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AutomovilGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="AutomovilGetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Matricula" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AutomovilUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Matricula" Type="varchar" Mode="In" />
+          <Parameter Name="Marca" Type="varchar" Mode="In" />
+          <Parameter Name="Modelo" Type="varchar" Mode="In" />
+          <Parameter Name="Color" Type="varchar" Mode="In" />
+          <Parameter Name="LatitudInicial" Type="varchar" Mode="In" />
+          <Parameter Name="LongitudInicial" Type="varchar" Mode="In" />
+          <Parameter Name="LatitudFinal" Type="varchar" Mode="In" />
+          <Parameter Name="LongitudFinal" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="BALfaroAPIGoogleMapsModelStoreContainer">
+          <EntitySet Name="Automovil" EntityType="Self.Automovil" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BALfaroAPIGoogleMapsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Automovil">
+          <Key>
+            <PropertyRef Name="Matricula" />
+          </Key>
+          <Property Name="Matricula" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LatitudInicial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LongitudInicial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LatitudFinal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LongitudFinal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="BALfaroAPIGoogleMapsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Automovil" EntityType="Self.Automovil" />
+          <FunctionImport Name="AutomovilAdd">
+            <Parameter Name="Matricula" Mode="In" Type="String" />
+            <Parameter Name="Marca" Mode="In" Type="String" />
+            <Parameter Name="Modelo" Mode="In" Type="String" />
+            <Parameter Name="Color" Mode="In" Type="String" />
+            <Parameter Name="LatitudInicial" Mode="In" Type="String" />
+            <Parameter Name="LongitudInicial" Mode="In" Type="String" />
+            <Parameter Name="LatitudFinal" Mode="In" Type="String" />
+            <Parameter Name="LongitudFinal" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AutomovilDelete">
+          <Parameter Name="Matricula" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AutomovilUpdate">
+            <Parameter Name="Matricula" Mode="In" Type="String" />
+            <Parameter Name="Marca" Mode="In" Type="String" />
+            <Parameter Name="Modelo" Mode="In" Type="String" />
+            <Parameter Name="Color" Mode="In" Type="String" />
+            <Parameter Name="LatitudInicial" Mode="In" Type="String" />
+            <Parameter Name="LongitudInicial" Mode="In" Type="String" />
+            <Parameter Name="LatitudFinal" Mode="In" Type="String" />
+            <Parameter Name="LongitudFinal" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AutomovilGetAll" ReturnType="Collection(BALfaroAPIGoogleMapsModel.AutomovilGetAll_Result)" />
+          <FunctionImport Name="AutomovilGetById" ReturnType="Collection(BALfaroAPIGoogleMapsModel.AutomovilGetById_Result)">
+            <Parameter Name="Matricula" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="AutomovilGetAll_Result">
+          <Property Type="String" Name="Matricula" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Marca" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Modelo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Color" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LatitudInicial" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LongitudInicial" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LatitudFinal" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LongitudFinal" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="AutomovilGetById_Result">
+          <Property Type="String" Name="Matricula" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Marca" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Modelo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Color" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LatitudInicial" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LongitudInicial" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LatitudFinal" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LongitudFinal" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BALfaroAPIGoogleMapsModelStoreContainer" CdmEntityContainer="BALfaroAPIGoogleMapsEntities">
+          <EntitySetMapping Name="Automovil">
+            <EntityTypeMapping TypeName="BALfaroAPIGoogleMapsModel.Automovil">
+              <MappingFragment StoreEntitySet="Automovil">
+                <ScalarProperty Name="LongitudFinal" ColumnName="LongitudFinal" />
+                <ScalarProperty Name="LatitudFinal" ColumnName="LatitudFinal" />
+                <ScalarProperty Name="LongitudInicial" ColumnName="LongitudInicial" />
+                <ScalarProperty Name="LatitudInicial" ColumnName="LatitudInicial" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AutomovilAdd" FunctionName="BALfaroAPIGoogleMapsModel.Store.AutomovilAdd" />
+          <FunctionImportMapping FunctionImportName="AutomovilDelete" FunctionName="BALfaroAPIGoogleMapsModel.Store.AutomovilDelete" />
+          <FunctionImportMapping FunctionImportName="AutomovilUpdate" FunctionName="BALfaroAPIGoogleMapsModel.Store.AutomovilUpdate" />
+          <FunctionImportMapping FunctionImportName="AutomovilGetAll" FunctionName="BALfaroAPIGoogleMapsModel.Store.AutomovilGetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BALfaroAPIGoogleMapsModel.AutomovilGetAll_Result">
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="LatitudInicial" ColumnName="LatitudInicial" />
+                <ScalarProperty Name="LongitudInicial" ColumnName="LongitudInicial" />
+                <ScalarProperty Name="LatitudFinal" ColumnName="LatitudFinal" />
+                <ScalarProperty Name="LongitudFinal" ColumnName="LongitudFinal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AutomovilGetById" FunctionName="BALfaroAPIGoogleMapsModel.Store.AutomovilGetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BALfaroAPIGoogleMapsModel.AutomovilGetById_Result">
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="LatitudInicial" ColumnName="LatitudInicial" />
+                <ScalarProperty Name="LongitudInicial" ColumnName="LongitudInicial" />
+                <ScalarProperty Name="LatitudFinal" ColumnName="LatitudFinal" />
+                <ScalarProperty Name="LongitudFinal" ColumnName="LongitudFinal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

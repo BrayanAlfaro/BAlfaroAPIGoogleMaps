@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BALfaroAPIGoogleMapsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Automovil">
+    <Key>
+      <PropertyRef Name="Matricula" />
+    </Key>
+    <Property Name="Matricula" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Marca" Type="varchar" MaxLength="50" />
+    <Property Name="Modelo" Type="varchar" MaxLength="50" />
+    <Property Name="Color" Type="varchar" MaxLength="50" />
+    <Property Name="LatitudInicial" Type="varchar" MaxLength="50" />
+    <Property Name="LongitudInicial" Type="varchar" MaxLength="50" />
+    <Property Name="LatitudFinal" Type="varchar" MaxLength="50" />
+    <Property Name="LongitudFinal" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Function Name="AutomovilAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Matricula" Type="varchar" Mode="In" />
+    <Parameter Name="Marca" Type="varchar" Mode="In" />
+    <Parameter Name="Modelo" Type="varchar" Mode="In" />
+    <Parameter Name="Color" Type="varchar" Mode="In" />
+    <Parameter Name="LatitudInicial" Type="varchar" Mode="In" />
+    <Parameter Name="LongitudInicial" Type="varchar" Mode="In" />
+    <Parameter Name="LatitudFinal" Type="varchar" Mode="In" />
+    <Parameter Name="LongitudFinal" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="AutomovilDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Matricula" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="AutomovilGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="AutomovilGetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Matricula" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="AutomovilUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Matricula" Type="varchar" Mode="In" />
+    <Parameter Name="Marca" Type="varchar" Mode="In" />
+    <Parameter Name="Modelo" Type="varchar" Mode="In" />
+    <Parameter Name="Color" Type="varchar" Mode="In" />
+    <Parameter Name="LatitudInicial" Type="varchar" Mode="In" />
+    <Parameter Name="LongitudInicial" Type="varchar" Mode="In" />
+    <Parameter Name="LatitudFinal" Type="varchar" Mode="In" />
+    <Parameter Name="LongitudFinal" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="BALfaroAPIGoogleMapsModelStoreContainer">
+    <EntitySet Name="Automovil" EntityType="Self.Automovil" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

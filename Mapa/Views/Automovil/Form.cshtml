@@ -1,0 +1,207 @@
+﻿@model ML.Automovil
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<style type="text/css">
+    /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+    #map {
+        height: 100%;
+    }
+
+    /* Optional: Makes the sample page fill the window. */
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<script>
+    let map;
+    var jsonInicio, jsonFinal;
+    var x = false, y = false;
+
+    function initMap() {
+        const directionsRenderer = new google.maps.DirectionsRenderer();
+        const directionsService = new google.maps.DirectionsService();
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: 19.59761, lng: -99.18054 },
+            zoom: 8,
+        });
+        directionsRenderer.setMap(map);
+
+
+
+        let infoWindow = new google.maps.InfoWindow({
+            content: "Click en el mapa para agregar un punto de incio!",
+            position: { lat: 19.59761, lng: -99.18054 },
+        });
+
+        infoWindow.open(map);
+
+        //function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+        //    directionsService.route({
+        //        origin:jsonFinal.latLng,
+        //        destination: jsonFinal.latLng,
+        //        travelMode: google.maps.TravelMode.DRIVING,
+        //    });
+        //    directionsService.route(request, function (result, status) {
+        //        if (status == 'OK') {
+        //            directionsRenderer.setDirections(result);
+        //        }
+        //    });
+        //}
+
+        function calcRoute() {
+            var start = jsonInicio.latLng;
+            var end = jsonFinal.latLng;
+            var request = {
+                origin: start,
+                destination: end,
+                travelMode: 'DRIVING'
+            };
+            directionsService.route(request, function (result, status) {
+                if (status == 'OK') {
+                    directionsRenderer.setDirections(result);
+                }
+            });
+        }
+
+
+        google.maps.event.addListener(map, 'click',
+             function (event) {
+                 // Close the current InfoWindow.
+                 infoWindow.close();
+                 // Create a new InfoWindow.
+                 infoWindow = new google.maps.InfoWindow({
+                     position: event.latLng,
+                 });
+                 infoWindow.setContent(
+                   JSON.stringify(event.latLng.toJSON(), null, 2)
+                 );
+                 infoWindow.open(map);
+                 if (x) {
+                     new google.maps.Marker({
+                         position: event.latLng,
+                         map: map,
+                         title: "Final"
+                     });
+                     jsonFinal = { "Nombre": "Inicio", "latLng": event.latLng };
+                     document.getElementById("LatFn").value = event.latLng.lat();
+                     document.getElementById("LngFn").value = event.latLng.lng();
+                     y = true;
+                 }
+                 else {
+                     new google.maps.Marker({
+                         position: event.latLng,
+                         map: map,
+                         title: "Inicio"
+                     });
+                     jsonInicio = { "Nombre": "Inicio", "latLng": event.latLng };
+                     document.getElementById("LatIn").value = event.latLng.lat();
+                     document.getElementById("LngIn").value = event.latLng.lng();
+                     x = true;
+                 }
+                 if (x && y) {
+                     calcRoute();
+                 }
+             }
+             );
+    }
+</script>
+
+
+
+<h2>Form</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Form", "Automovil", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(model=> model.Accion)
+            <div class="form-horizontal">
+                @if (Model.Accion == "Add")
+                {
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Matricula, new { })
+                            @Html.TextBoxFor(model => model.Matricula, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Matricula)
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Matricula, new { })
+                            @Html.TextBoxFor(model => model.Matricula, new { @class = "form-control", @readonly="true"})
+                            @Html.ValidationMessageFor(model => model.Matricula)
+                        </div>
+                    </div>
+                }              
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.Marca)
+                        @Html.TextBoxFor(model => model.Marca, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Marca)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.Modelo)
+                        @Html.TextBoxFor(model => model.Modelo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Modelo)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.Color)
+                        @Html.TextBoxFor(model => model.Color, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.Color)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.LatitudInicial)
+                        @Html.TextBoxFor(model => model.LatitudInicial, new { @class = "form-control", @readonly = "true", @id="LatIn" })
+                        @Html.ValidationMessageFor(model => model.LatitudInicial)
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.LongitudInicial)
+                        @Html.TextBoxFor(model => model.LongitudInicial, new { @class = "form-control", @readonly = "true", @id = "LngIn" })
+                        @Html.ValidationMessageFor(model => model.LongitudInicial)
+                    </div>
+                </div>
+                <div class="form-group">                    
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.LatitudFinal)
+                        @Html.TextBoxFor(model => model.LatitudFinal, new { @class = "form-control", @readonly = "true", @id = "LatFn" })
+                        @Html.ValidationMessageFor(model => model.LatitudFinal)
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.LongitudFinal)
+                        @Html.TextBoxFor(model => model.LongitudFinal, new { @class = "form-control", @readonly = "true", @id = "LngFn" })
+                        @Html.ValidationMessageFor(model => model.LongitudFinal)
+                    </div>
+                    <div class="col-md-4">
+                        <input type="submit" value="Guardar" class="btn btn-success" />
+                        @Html.ActionLink("Regresar", "GetAll", "Automovil", htmlAttributes: new { @class = "btn btn-danger" })
+                    </div>
+                </div>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSKBDdPPlfca_zTwyxKiicRQn1qfgRjLw&callback=initMap&libraries=&v=weekly&sensor=false"
+                        async></script>
+                <div id="map" style="width: 1200px; height: 400px;"></div>              
+                <div class="form-group">
+                    
+                </div>
+            </div>
+        }
+        
+    </div>
+</div>

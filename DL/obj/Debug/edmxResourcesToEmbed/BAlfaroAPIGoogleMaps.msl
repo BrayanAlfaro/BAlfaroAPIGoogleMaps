@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BALfaroAPIGoogleMapsModelStoreContainer" CdmEntityContainer="BALfaroAPIGoogleMapsEntities">
+    <EntitySetMapping Name="Automovil">
+      <EntityTypeMapping TypeName="BALfaroAPIGoogleMapsModel.Automovil">
+        <MappingFragment StoreEntitySet="Automovil">
+          <ScalarProperty Name="LongitudFinal" ColumnName="LongitudFinal" />
+          <ScalarProperty Name="LatitudFinal" ColumnName="LatitudFinal" />
+          <ScalarProperty Name="LongitudInicial" ColumnName="LongitudInicial" />
+          <ScalarProperty Name="LatitudInicial" ColumnName="LatitudInicial" />
+          <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AutomovilAdd" FunctionName="BALfaroAPIGoogleMapsModel.Store.AutomovilAdd" />
+    <FunctionImportMapping FunctionImportName="AutomovilDelete" FunctionName="BALfaroAPIGoogleMapsModel.Store.AutomovilDelete" />
+    <FunctionImportMapping FunctionImportName="AutomovilUpdate" FunctionName="BALfaroAPIGoogleMapsModel.Store.AutomovilUpdate" />
+    <FunctionImportMapping FunctionImportName="AutomovilGetAll" FunctionName="BALfaroAPIGoogleMapsModel.Store.AutomovilGetAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BALfaroAPIGoogleMapsModel.AutomovilGetAll_Result">
+          <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="LatitudInicial" ColumnName="LatitudInicial" />
+          <ScalarProperty Name="LongitudInicial" ColumnName="LongitudInicial" />
+          <ScalarProperty Name="LatitudFinal" ColumnName="LatitudFinal" />
+          <ScalarProperty Name="LongitudFinal" ColumnName="LongitudFinal" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AutomovilGetById" FunctionName="BALfaroAPIGoogleMapsModel.Store.AutomovilGetById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BALfaroAPIGoogleMapsModel.AutomovilGetById_Result">
+          <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="LatitudInicial" ColumnName="LatitudInicial" />
+          <ScalarProperty Name="LongitudInicial" ColumnName="LongitudInicial" />
+          <ScalarProperty Name="LatitudFinal" ColumnName="LatitudFinal" />
+          <ScalarProperty Name="LongitudFinal" ColumnName="LongitudFinal" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

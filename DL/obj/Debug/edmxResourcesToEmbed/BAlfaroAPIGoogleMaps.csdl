@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BALfaroAPIGoogleMapsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Automovil">
+    <Key>
+      <PropertyRef Name="Matricula" />
+    </Key>
+    <Property Name="Matricula" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LatitudInicial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LongitudInicial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LatitudFinal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LongitudFinal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="BALfaroAPIGoogleMapsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Automovil" EntityType="Self.Automovil" />
+    <FunctionImport Name="AutomovilAdd">
+      <Parameter Name="Matricula" Mode="In" Type="String" />
+      <Parameter Name="Marca" Mode="In" Type="String" />
+      <Parameter Name="Modelo" Mode="In" Type="String" />
+      <Parameter Name="Color" Mode="In" Type="String" />
+      <Parameter Name="LatitudInicial" Mode="In" Type="String" />
+      <Parameter Name="LongitudInicial" Mode="In" Type="String" />
+      <Parameter Name="LatitudFinal" Mode="In" Type="String" />
+      <Parameter Name="LongitudFinal" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AutomovilDelete">
+      <Parameter Name="Matricula" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AutomovilUpdate">
+      <Parameter Name="Matricula" Mode="In" Type="String" />
+      <Parameter Name="Marca" Mode="In" Type="String" />
+      <Parameter Name="Modelo" Mode="In" Type="String" />
+      <Parameter Name="Color" Mode="In" Type="String" />
+      <Parameter Name="LatitudInicial" Mode="In" Type="String" />
+      <Parameter Name="LongitudInicial" Mode="In" Type="String" />
+      <Parameter Name="LatitudFinal" Mode="In" Type="String" />
+      <Parameter Name="LongitudFinal" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AutomovilGetAll" ReturnType="Collection(BALfaroAPIGoogleMapsModel.AutomovilGetAll_Result)" />
+    <FunctionImport Name="AutomovilGetById" ReturnType="Collection(BALfaroAPIGoogleMapsModel.AutomovilGetById_Result)">
+      <Parameter Name="Matricula" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="AutomovilGetAll_Result">
+    <Property Type="String" Name="Matricula" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Marca" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Modelo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Color" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LatitudInicial" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LongitudInicial" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LatitudFinal" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LongitudFinal" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="AutomovilGetById_Result">
+    <Property Type="String" Name="Matricula" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Marca" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Modelo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Color" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LatitudInicial" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LongitudInicial" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LatitudFinal" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LongitudFinal" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>
