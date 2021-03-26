@@ -32,7 +32,7 @@ namespace Mapa.Controllers
                 if (result.Correct)
                 {
                     automovil = ((ML.Automovil)result.Object);
-
+                    automovil.Accion = "Update";
                     return View(automovil);
                 }
                 else

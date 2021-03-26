@@ -20,6 +20,11 @@
     }
 </style>
 <script>
+    var Accion = @Html.Raw(Json.Encode(Model.Accion));
+    var Latini = @Html.Raw(Json.Encode(Model.LatitudInicial));
+    var Lngini = @Html.Raw(Json.Encode(Model.LongitudInicial));
+    var Latfin = @Html.Raw(Json.Encode(Model.LatitudFinal));
+    var Lngfin = @Html.Raw(Json.Encode(Model.LongitudFinal));
     let map;
     var jsonInicio, jsonFinal;
     var x = false, y = false;
@@ -42,22 +47,8 @@
 
         infoWindow.open(map);
 
-        //function calculateAndDisplayRoute(directionsService, directionsRenderer) {
-        //    directionsService.route({
-        //        origin:jsonFinal.latLng,
-        //        destination: jsonFinal.latLng,
-        //        travelMode: google.maps.TravelMode.DRIVING,
-        //    });
-        //    directionsService.route(request, function (result, status) {
-        //        if (status == 'OK') {
-        //            directionsRenderer.setDirections(result);
-        //        }
-        //    });
-        //}
 
-        function calcRoute() {
-            var start = jsonInicio.latLng;
-            var end = jsonFinal.latLng;
+        function calcRoute(start,end) {
             var request = {
                 origin: start,
                 destination: end,
@@ -70,6 +61,11 @@
             });
         }
 
+        if(Accion=="Update" && x!=true && y!=true ){
+            var start=new google.maps.LatLng(Latini, Lngini);
+            var end=new google.maps.LatLng(Latfin,Lngfin);
+            calcRoute(start,end);
+        }
 
         google.maps.event.addListener(map, 'click',
              function (event) {
@@ -105,8 +101,9 @@
                      document.getElementById("LngIn").value = event.latLng.lng();
                      x = true;
                  }
+
                  if (x && y) {
-                     calcRoute();
+                     calcRoute(jsonInicio.latLng, jsonFinal.latLng);
                  }
              }
              );
